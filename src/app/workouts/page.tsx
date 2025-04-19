@@ -1,22 +1,17 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { ChartAreaInteractive } from "@/components/chart-area-interactive"
-import { DataTable } from "@/components/data-table"
-import { SectionCards } from "@/components/section-cards"
-import { SiteHeader } from "@/components/site-header"
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar"
+import { AppSidebar } from '@/components/app-sidebar'
+import { SiteHeader } from '@/components/site-header'
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 
-import data from "./data.json"
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Page() {
   return (
     <SidebarProvider
       style={
         {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
+          '--sidebar-width': 'calc(var(--spacing) * 72)',
+          '--header-height': 'calc(var(--spacing) * 12)',
         } as React.CSSProperties
       }
     >
@@ -25,12 +20,45 @@ export default function Page() {
         <SiteHeader header="Workouts" />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">
-            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-              <SectionCards />
-              <div className="px-4 lg:px-6">
-                <ChartAreaInteractive />
+            <div className="flex flex-col gap-4 py-4 md:gap-10 md:py-6 px-4 lg:px-6">
+              {/* Header */}
+              <div className="flex flex-col gap-1">
+                <h2 className="text-3xl font-semibold">Workouts</h2>
+                <p className="text-base text-foreground">Create and manage your workout plans.</p>
+                <Button asChild className="mt-2 w-fit">
+                  <Link href="/workouts/new">Start an empty workout</Link>
+                </Button>
               </div>
-              <DataTable data={data} />
+
+              {/* TODO: Insights */}
+
+              {/* Recent workouts  */}
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-xl font-semibold">Recent workouts</h2>
+                </div>
+                <div>Recent workout: 1</div>
+                <div>Recent workout: 2</div>
+              </div>
+
+              {/* Workout Templates */}
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-wrap items-center justify-between sm:flex-nowrap">
+                  <div>
+                    <h2 className="text-xl font-semibold">Templates</h2>
+                    <p className="text-sm text-foreground">
+                      Create and save a new workout template.
+                    </p>
+                  </div>
+                  <div className="shrink-0">
+                    <Button asChild className="mt-2 w-fit">
+                      <Link href="/templates/new">Create a new template</Link>
+                    </Button>
+                  </div>
+                </div>
+                <div>Template: 1</div>
+                <div>Template: 2</div>
+              </div>
             </div>
           </div>
         </div>
