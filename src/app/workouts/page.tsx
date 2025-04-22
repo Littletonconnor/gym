@@ -4,6 +4,7 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { IconPlus } from '@tabler/icons-react'
 
 export default function Page() {
   return (
@@ -26,7 +27,10 @@ export default function Page() {
                 <h2 className="text-3xl font-semibold">Workouts</h2>
                 <p className="text-base text-foreground">Create and manage your workout plans.</p>
                 <Button asChild className="mt-2 w-fit">
-                  <Link href="/workouts/new">Start an empty workout</Link>
+                  <Link href="/workouts/new">
+                    <IconPlus />
+                    Start workout
+                  </Link>
                 </Button>
               </div>
 
