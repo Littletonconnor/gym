@@ -3,6 +3,8 @@ import { SiteHeader } from '@/components/site-header'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 
 import { Button } from '@/components/ui/button'
+import React from 'react'
+import { Input } from '@/components/ui/input'
 
 export default function Page() {
   return (
@@ -22,7 +24,7 @@ export default function Page() {
             <div className="flex flex-col gap-4 py-4 md:gap-10 md:py-6 px-4 lg:px-6">
               <div className="flex flex-col gap-1">
                 <div className="flex flex-wrap items-center justify-between sm:flex-nowrap">
-                  <h2 className="text-3xl font-semibold">New Workout</h2>
+                  <EditableButton />
                   <Button variant="default" className="mt-2 w-fit">
                     Finish workout
                   </Button>
@@ -36,5 +38,22 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
+  )
+}
+
+// A title that starts off as a button but once clicked turns into a textfield
+function EditableButton() {
+  const [isEditing, setIsEditing] = React.useState(false)
+
+  return (
+    <div>
+      {isEditing ? (
+        <Input value="blah" />
+      ) : (
+        <Button variant="ghost" className="mt-2 w-fit" onClick={() => setIsEditing(true)}>
+          <h2 className="text-3xl font-semibold">New Workout2</h2>
+        </Button>
+      )}
+    </div>
   )
 }

@@ -1,8 +1,9 @@
 import { AppSidebar } from '@/components/app-sidebar'
 import { SiteHeader } from '@/components/site-header'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
-
+import { EditableButton } from '@/app/workouts/new/editable-button'
 import { Button } from '@/components/ui/button'
+import React from 'react'
 
 export default function Page() {
   return (
@@ -22,10 +23,15 @@ export default function Page() {
             <div className="flex flex-col gap-4 py-4 md:gap-10 md:py-6 px-4 lg:px-6">
               <div className="flex flex-col gap-1">
                 <div className="flex flex-wrap items-center justify-between sm:flex-nowrap">
-                  <h2 className="text-3xl font-semibold">New Workout</h2>
-                  <Button variant="default" className="mt-2 w-fit">
-                    Finish workout
-                  </Button>
+                  <EditableButton />
+                  <div className="flex gap-2">
+                    <Button variant="default" className="mt-2 w-fit">
+                      Finish
+                    </Button>
+                    <Button variant="destructive" className="mt-2 w-fit">
+                      Cancel
+                    </Button>
+                  </div>
                 </div>
                 <Button variant="outline" className="mt-2 w-fit">
                   Add exercise
